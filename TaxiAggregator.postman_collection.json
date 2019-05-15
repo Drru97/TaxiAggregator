@@ -1,0 +1,428 @@
+{
+	"info": {
+		"_postman_id": "ce722fc2-aab6-4a19-bd7c-4ad90c8d2391",
+		"name": "TaxiAggregator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Uber",
+			"item": [
+				{
+					"name": "Uber Price Estimate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token G2BVdH1STnzYM75I3OVsp5XdYMSQipE0RNcvHxcV",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en_US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.uber.com/v1.2/estimates/price?start_latitude=49.871448&start_longitude=24.053115&end_latitude=49.843873&end_longitude=24.005708",
+							"protocol": "https",
+							"host": [
+								"api",
+								"uber",
+								"com"
+							],
+							"path": [
+								"v1.2",
+								"estimates",
+								"price"
+							],
+							"query": [
+								{
+									"key": "start_latitude",
+									"value": "49.871448"
+								},
+								{
+									"key": "start_longitude",
+									"value": "24.053115"
+								},
+								{
+									"key": "end_latitude",
+									"value": "49.843873"
+								},
+								{
+									"key": "end_longitude",
+									"value": "24.005708"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Uber Time Estimate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token G2BVdH1STnzYM75I3OVsp5XdYMSQipE0RNcvHxcV",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "en_US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.uber.com/v1.2/estimates/time?start_latitude=49.871448&start_longitude=24.053115",
+							"protocol": "https",
+							"host": [
+								"api",
+								"uber",
+								"com"
+							],
+							"path": [
+								"v1.2",
+								"estimates",
+								"time"
+							],
+							"query": [
+								{
+									"key": "start_latitude",
+									"value": "49.871448"
+								},
+								{
+									"key": "start_longitude",
+									"value": "24.053115"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Uklon",
+			"item": [
+				{
+					"name": "Uklon Price Estimate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "6289de851fc726f887af8d5d7a56c635",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "City=5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "CityId",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "IsRouteUndefined",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "TimeType",
+									"value": "now",
+									"type": "text"
+								},
+								{
+									"key": "CarType",
+									"value": "Standart",
+									"type": "text"
+								},
+								{
+									"key": "PaymentType",
+									"value": "Cash",
+									"type": "text"
+								},
+								{
+									"key": "RememberUser",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "ExtraCost",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "route.entrance",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "route.routePoints[0].AddressName",
+									"value": "Tvorcha street",
+									"type": "text"
+								},
+								{
+									"key": "route.routePoints[0].HouseNumber",
+									"value": "16",
+									"type": "text"
+								},
+								{
+									"key": "route.routePoints[1].AddressName",
+									"value": "Shyroka street",
+									"type": "text"
+								},
+								{
+									"key": "route.routePoints[1].HouseNumber",
+									"value": "100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://www.uklon.com.ua/api/v1/orders/cost",
+							"protocol": "https",
+							"host": [
+								"www",
+								"uklon",
+								"com",
+								"ua"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"cost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Uklon Fetch Address",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "City=5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://www.uklon.com.ua/api/v1/addresses?q=Творча&limit=1&timestamp=1557250402913",
+							"protocol": "https",
+							"host": [
+								"www",
+								"uklon",
+								"com",
+								"ua"
+							],
+							"path": [
+								"api",
+								"v1",
+								"addresses"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Творча"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "timestamp",
+									"value": "1557250402913"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Econom Taxt",
+			"item": [
+				{
+					"name": "Econom Taxi Street Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://mobilauto.com.ua/map/street.php?taxi_service_id=16&search=бог&settlement_id=1&language=uk",
+							"protocol": "http",
+							"host": [
+								"mobilauto",
+								"com",
+								"ua"
+							],
+							"path": [
+								"map",
+								"street.php"
+							],
+							"query": [
+								{
+									"key": "taxi_service_id",
+									"value": "16"
+								},
+								{
+									"key": "search",
+									"value": "бог"
+								},
+								{
+									"key": "settlement_id",
+									"value": "1"
+								},
+								{
+									"key": "language",
+									"value": "uk"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Econom Taxi Price Estimate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mode\": \"calculate\",\n    \"taxiServiceId\": 16,\n    \"language\": \"uk\",\n    \"data\": {\n        \"section\": \"\",\n        \"appartment\": \"\",\n        \"parameters\": [],\n        \"car_type\": [\n            \"econom\"\n        ],\n        \"preliminary_time\": \"\",\n        \"points\": [\n            {\n                \"settlement_name\": \"ЛЬВІВ\",\n                \"settlement_id\": 1,\n                \"street_name\": \"ТВОРЧА ВУЛ.\",\n                \"street_type\": \"ВУЛ.\",\n                \"street_zone\": \"\",\n                \"street_id\": 705,\n                \"building_number\": \"16\"\n            },\n            {\n                \"settlement_name\": \"ЛЬВІВ\",\n                \"settlement_id\": 1,\n                \"street_name\": \"НАУКОВА ВУЛ.\",\n                \"street_type\": \"ВУЛ.\",\n                \"street_zone\": \"\",\n                \"street_id\": 1627,\n                \"building_number\": \"1\"\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "http://mobilauto.com.ua/widget/online_order/order.php",
+							"protocol": "http",
+							"host": [
+								"mobilauto",
+								"com",
+								"ua"
+							],
+							"path": [
+								"widget",
+								"online_order",
+								"order.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Optima Taxi",
+			"item": [
+				{
+					"name": "Optima Taxi Price Estimate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "cookie",
+								"value": "PHPSESSID=3pa6n7ofmoh74deif4o4b615t6; street=%D0%A2%D0%92%D0%9E%D0%A0%D0%A7%D0%90+%D0%92%D0%A3%D0%9B.; house=16; porch=2",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "address_from",
+									"value": "ТВОРЧА ВУЛ. 16",
+									"type": "text"
+								},
+								{
+									"key": "address_to",
+									"value": "БОГДАНІВСЬКА ВУЛ. 1",
+									"type": "text"
+								},
+								{
+									"key": "car_class",
+									"value": "standart",
+									"type": "text"
+								},
+								{
+									"key": "required_time",
+									"value": "07.05.2019 20:06",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://online.optima.taxi/orders/cost",
+							"protocol": "https",
+							"host": [
+								"online",
+								"optima",
+								"taxi"
+							],
+							"path": [
+								"orders",
+								"cost"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
