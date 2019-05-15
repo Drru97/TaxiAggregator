@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.Uber", "Taxi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{C4CA0C1B-A6BC-40C0-B0A1-48571BA91A57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.EconomTaxi", "TaxiAggregator.EconomTaxi\TaxiAggregator.EconomTaxi.csproj", "{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{C4CA0C1B-A6BC-40C0-B0A1-48571BA91A57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4CA0C1B-A6BC-40C0-B0A1-48571BA91A57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4CA0C1B-A6BC-40C0-B0A1-48571BA91A57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
