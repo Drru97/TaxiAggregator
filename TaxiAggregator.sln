@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.EconomTaxi", "TaxiAggregator.EconomTaxi\TaxiAggregator.EconomTaxi.csproj", "{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.Uklon", "TaxiAggregator.Uklon\TaxiAggregator.Uklon.csproj", "{8171E5A8-7AD0-4F12-BFD4-2AF5438260A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.Bolt", "TaxiAggregator.Bolt\TaxiAggregator.Bolt.csproj", "{6BF8351D-86CB-4A94-A746-697DA4FDC623}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8171E5A8-7AD0-4F12-BFD4-2AF5438260A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8171E5A8-7AD0-4F12-BFD4-2AF5438260A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8171E5A8-7AD0-4F12-BFD4-2AF5438260A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8171E5A8-7AD0-4F12-BFD4-2AF5438260A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BF8351D-86CB-4A94-A746-697DA4FDC623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF8351D-86CB-4A94-A746-697DA4FDC623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BF8351D-86CB-4A94-A746-697DA4FDC623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF8351D-86CB-4A94-A746-697DA4FDC623}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
