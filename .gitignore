@@ -117,3 +117,6 @@ _ReSharper*/
 *.mdf
 *.ldf
 *.ndf
+
+# JetBrains Rider files
+.idea
