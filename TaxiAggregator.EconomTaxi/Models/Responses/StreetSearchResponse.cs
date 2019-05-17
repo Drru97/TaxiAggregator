@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace TaxiAggregator.EconomTaxi.Models.Responses
 {
-    public class SearchStreetResponse
+    public class StreetSearchResponse
     {
         [JsonProperty("data")]
         public List<Street> Streets { get; set; }

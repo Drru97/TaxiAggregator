@@ -6,7 +6,7 @@ namespace TaxiAggregator.EconomTaxi
 {
     public interface IEconomTaxiClient
     {
-        Task<SearchStreetResponse> SearchStreetAsync(StreetSearchRequest request);
+        Task<StreetSearchResponse> SearchStreetAsync(StreetSearchRequest request);
         Task<PriceEstimateResponse> EstimatePriceAsync(PriceEstimateRequest request);
     }
 }

@@ -16,9 +16,11 @@ namespace TaxiAggregator.EconomTaxi
         public EconomTaxiHttpClient(HttpClient http)
         {
             _http = http;
+            
+            SetupHttpClient();
         }
 
-        public async Task<SearchStreetResponse> SearchStreetAsync(StreetSearchRequest request)
+        public async Task<StreetSearchResponse> SearchStreetAsync(StreetSearchRequest request)
         {
             var builder = new UriBuilder(EconomTaxiConstants.ECONOM_TAXI_BASE_URL + "/" +
                                          EconomTaxiConstants.ECONOM_TAXI_STREET_SEARCH_URL);
@@ -34,7 +36,7 @@ namespace TaxiAggregator.EconomTaxi
 
             var response = await _http.GetStringAsync(url);
 
-            return JsonConvert.DeserializeObject<SearchStreetResponse>(response);
+            return JsonConvert.DeserializeObject<StreetSearchResponse>(response);
         }
 
         public async Task<PriceEstimateResponse> EstimatePriceAsync(PriceEstimateRequest request)
