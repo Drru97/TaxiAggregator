@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ce722fc2-aab6-4a19-bd7c-4ad90c8d2391",
+		"_postman_id": "d10e7553-0a21-4de0-9641-25e9a75e0af9",
 		"name": "TaxiAggregator",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -29,10 +29,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://api.uber.com/v1.2/estimates/price?start_latitude=49.871448&start_longitude=24.053115&end_latitude=49.843873&end_longitude=24.005708",
 							"protocol": "https",
@@ -89,10 +85,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://api.uber.com/v1.2/estimates/time?start_latitude=49.871448&start_longitude=24.053115",
 							"protocol": "https",
@@ -242,10 +234,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "https://www.uklon.com.ua/api/v1/addresses?q=Творча&limit=1&timestamp=1557250402913",
 							"protocol": "https",
@@ -277,6 +265,105 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Uklon Nearest Address",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://uklon.com.ua/api/v1/addresses/nearest?lat=49.843530553373434&lng=24.001695066690445&total=1&radius=0.05&locale=uk",
+							"protocol": "https",
+							"host": [
+								"uklon",
+								"com",
+								"ua"
+							],
+							"path": [
+								"api",
+								"v1",
+								"addresses",
+								"nearest"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "49.843530553373434"
+								},
+								{
+									"key": "lng",
+									"value": "24.001695066690445"
+								},
+								{
+									"key": "total",
+									"value": "1"
+								},
+								{
+									"key": "radius",
+									"value": "0.05"
+								},
+								{
+									"key": "locale",
+									"value": "uk"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Uklon Price Estimate v2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "f42222a32583453089a77af021bca83cn",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "uk",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMzg0IiwidHlwIjoiSldUIn0.eyJqdGkiOiJjNjkwNzg5MGMyODA0NDk0OGMwZGI1MjVkYzUxZWNlYSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZ3JvdXBzaWQiOiJNeER2WlNLN3ZWeU4zMEM5YTV5N1ZZMm4yT3N2bnNMN2VKUGtIVENDX2p3RW12b3h0RktmdFpkWkpaZDJuZGVrIiwidW5pcXVlX25hbWUiOiJvbGVnLmR5c3Rha0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoib2xlZy5keXN0YWtAZ21haWwuY29tIiwibmFtZWlkIjoiYWI1OGM0ZmItNGY5MC00NjgyLWIyYWMtMDkxZTdjMWUwNjU2IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJhYjU4YzRmYi00ZjkwLTQ2ODItYjJhYy0wOTFlN2MxZTA2NTYiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJvbGVnLmR5c3Rha0BnbWFpbC5jb20iLCJlbWFpbCI6Im9sZWcuZHlzdGFrQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2xvY2FsaXR5IjoiNSIsIm5iZiI6MTU1ODA5NTg0MSwiZXhwIjoxNTU4MTEwMjQxLCJpYXQiOjE1NTgwOTU4NDEsImlzcyI6Imh0dHBzOi8vdWtsb24uY29tLnVhLyIsImF1ZCI6Imh0dHBzOi8vdWtsb24uY29tLnVhLyIsInByb3BlcnRpZXMiOnsiYXBwX3VpZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwiY2xpZW50X2lkIjoiZjQyMjIyYTMyNTgzNDUzMDg5YTc3YWYwMjFiY2E4M2NuIn19.sdnXlPDPJyDZnGTVtOxcYIKq4qpvMil9dVc6dVOAVq--98sKc4pssirDragKxruBIZjlz7IFNCNAR4vfug2VmmbEcbM1XbXz2T82oEhw_OI3by7DDMA2JQmHXRglfvkvK1J6dKue9Zkrj2Tx_HI9POspmqJRcEjHpVLoUd95KhQiCNlCnCbAwnF40-rJD_qLm7bBCdHTHlrcLj7tVM5TCnmGJKlz-LZ60KxqHhXxA1pOy8Cuf6B3l7Kyph4MWZlQhe4sa27rscwvRQWtlMcr5HjRcxHEyHhA9_n6L3JILGwsdVvl1-KtU2rdOONy53zjPMPRGJCYhY7fxGRnEWxoEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"add_conditions\": [],\n    \"product_type\": \"Standard\",\n    \"route\": {\n        \"route_points\": [\n            {\n                \"city_id\": 1,\n                \"house_number\": \"1\",\n                \"address_name\": \"Naukova street\"\n            },\n            {\n                \"city_id\": 1,\n                \"house_number\": \"1\",\n                \"address_name\": \"Lysenka street\"\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "https://uklon.com.ua/api/v2/orders/cost",
+							"protocol": "https",
+							"host": [
+								"uklon",
+								"com",
+								"ua"
+							],
+							"path": [
+								"api",
+								"v2",
+								"orders",
+								"cost"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -288,10 +375,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://mobilauto.com.ua/map/street.php?taxi_service_id=16&search=бог&settlement_id=1&language=uk",
 							"protocol": "http",
@@ -417,6 +500,55 @@
 							"path": [
 								"orders",
 								"cost"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bolt",
+			"item": [
+				{
+					"name": "Bolt Price Estimate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic KzM4MDYzOTI5NjUzNzphZGZkMjE0Yi01ZjA4LTM0NGQtYTM2Ni0yODBmMTZlMjUwMWQ=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://search.taxify.eu/findCategoriesOverview?lat=49.892267&lng=24.0006304&destination_lat=49.871718&destination_lng=24.250708",
+							"protocol": "https",
+							"host": [
+								"search",
+								"taxify",
+								"eu"
+							],
+							"path": [
+								"findCategoriesOverview"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "49.892267"
+								},
+								{
+									"key": "lng",
+									"value": "24.0006304"
+								},
+								{
+									"key": "destination_lat",
+									"value": "49.871718"
+								},
+								{
+									"key": "destination_lng",
+									"value": "24.250708"
+								}
 							]
 						}
 					},
