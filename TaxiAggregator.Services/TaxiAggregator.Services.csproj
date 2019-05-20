@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TaxiAggregator.Bolt\TaxiAggregator.Bolt.csproj" />
+      <ProjectReference Include="..\TaxiAggregator.Domain\TaxiAggregator.Domain.csproj" />
+      <ProjectReference Include="..\TaxiAggregator.Taxi838\TaxiAggregator.Taxi838.csproj" />
+      <ProjectReference Include="..\TaxiAggregator.Uber\TaxiAggregator.Uber.csproj" />
+      <ProjectReference Include="..\TaxiAggregator.Uklon\TaxiAggregator.Uklon.csproj" />
+    </ItemGroup>
+
+</Project>
