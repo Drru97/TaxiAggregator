@@ -5,8 +5,8 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
-using TaxiAggregator.Bolt.Requests;
-using TaxiAggregator.Bolt.Responses;
+using TaxiAggregator.Bolt.Models.Requests;
+using TaxiAggregator.Bolt.Models.Responses;
 
 namespace TaxiAggregator.Bolt
 {

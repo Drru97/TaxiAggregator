@@ -1,7 +1,6 @@
 using Newtonsoft.Json;
-using TaxiAggregator.Bolt.Requests;
 
-namespace TaxiAggregator.Bolt.Responses
+namespace TaxiAggregator.Bolt.Models.Responses
 {
     public class PriceEstimateResponse
     {

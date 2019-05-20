@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace TaxiAggregator.Bolt.Responses
+namespace TaxiAggregator.Bolt.Models.Responses
 {
     public class SearchCategory
     {

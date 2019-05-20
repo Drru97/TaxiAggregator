@@ -1,4 +1,4 @@
-namespace TaxiAggregator.Bolt.Requests
+namespace TaxiAggregator.Bolt.Models.Requests
 {
     public class PriceEstimateRequest
     {

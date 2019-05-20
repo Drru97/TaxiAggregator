@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
-using TaxiAggregator.Bolt.Requests;
-using TaxiAggregator.Bolt.Responses;
+using TaxiAggregator.Bolt.Models.Requests;
+using TaxiAggregator.Bolt.Models.Responses;
 
 namespace TaxiAggregator.Bolt
 {
