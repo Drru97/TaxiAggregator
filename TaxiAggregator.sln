@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.Uklon", "Tax
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.Bolt", "TaxiAggregator.Bolt\TaxiAggregator.Bolt.csproj", "{6BF8351D-86CB-4A94-A746-697DA4FDC623}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.Taxi838", "TaxiAggregator.Taxi838\TaxiAggregator.Taxi838.csproj", "{AC34B7CE-8D16-49FA-A024-BD0C3EBE2DCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{6BF8351D-86CB-4A94-A746-697DA4FDC623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BF8351D-86CB-4A94-A746-697DA4FDC623}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BF8351D-86CB-4A94-A746-697DA4FDC623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC34B7CE-8D16-49FA-A024-BD0C3EBE2DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC34B7CE-8D16-49FA-A024-BD0C3EBE2DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC34B7CE-8D16-49FA-A024-BD0C3EBE2DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC34B7CE-8D16-49FA-A024-BD0C3EBE2DCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
