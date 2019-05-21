@@ -81,17 +81,14 @@ namespace TaxiAggregator.Uklon
         {
             var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8,
                 UklonConstants.UKLON_PRICE_ESTIMATE_REQUEST_CONTENT_TYPE);
-
-            content.Headers.TryAddWithoutValidation("client_id", _clientId);
-            content.Headers.TryAddWithoutValidation("Authorization", UklonConstants.UKLON_AUTH_TYPE + " " + _token);
-            content.Headers.TryAddWithoutValidation("locale", "uk");
+            
+            _http.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(UklonConstants.UKLON_AUTH_TYPE + " " + _token);
 
             const string url = UklonConstants.UKLON_BASE_URL + "/" + UklonConstants.UKLON_PRICE_ESTIMATE_V2_URL;
 
             var responseMessage = await _http.PostAsync(url, content);
             var response = await responseMessage.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<PriceEstimateResponse>(await responseMessage.Content
-                .ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<PriceEstimateResponse>(response);
         }
 
         private void SetupHttpClient()

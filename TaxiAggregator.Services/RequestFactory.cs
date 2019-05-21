@@ -55,7 +55,7 @@ namespace TaxiAggregator.Services
             var uklon = new Uklon.Models.Requests.NearestAddressRequest
             {
                 Latitude = fromOrigin ? request.Origin.Latitude : request.Destination.Latitude,
-                Longitude = fromOrigin ? request.Origin.Latitude : request.Destination.Latitude
+                Longitude = fromOrigin ? request.Origin.Longitude : request.Destination.Longitude
             };
 
             return uklon;

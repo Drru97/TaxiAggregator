@@ -25,12 +25,12 @@ namespace TaxiAggregator.Services
                     Price = new Price
                     {
                         Cost = (int) ((price.LowEstimate + price.HighEstimate) / 2),
-                        MinPrice = price.LowEstimate as int?,
-                        MaxPrice = price.HighEstimate as int?
+                        MinPrice = (int?) price.LowEstimate,
+                        MaxPrice = (int?) price.HighEstimate
                     },
                     Distance = price.Distance,
                     Seats = 4,
-                    PickupTime = time.Estimate as int?
+                    PickupTime = (int?) time.Estimate
                 }
             };
 
@@ -65,9 +65,9 @@ namespace TaxiAggregator.Services
             var price = order.CarType == CarType.Business
                 ? response.Data.SearchCategories.Single(x => x.Name.Equals("Comfort"))
                 : response.Data.SearchCategories.Single(x => x.Name.Equals("Bolt"));
-
-            var minCost = int.Parse(price.PricePrediction.Trim('₴').Split('-').First());
-            var maxCost = int.Parse(price.PricePrediction.Trim('₴').Split('-').Last());
+            
+            var minCost = int.Parse(price.PricePrediction.Trim('₴').Split('–').First());
+            var maxCost = int.Parse(price.PricePrediction.Trim('₴').Split('–').Last());
             var avgCost = (minCost + maxCost) / 2;
 
             var detail = new TripDetail

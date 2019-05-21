@@ -35,7 +35,9 @@ namespace TaxiAggregator.Uber
 
             builder.Query = query.ToString();
             var url = builder.ToString();
-
+            
+            _http.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_token);
+            
             var response = await _http.GetStringAsync(url);
 
             return JsonConvert.DeserializeObject<PriceEstimateResponse>(response);

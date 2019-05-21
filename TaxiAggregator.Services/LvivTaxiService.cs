@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TaxiAggregator.Bolt;
@@ -43,7 +44,8 @@ namespace TaxiAggregator.Services
             var response = new TaxiResponse
             {
                 Origin = order.Origin,
-                Destination = order.Destination
+                Destination = order.Destination,
+                Details = new List<TripDetail>(4)
             };
 
             //// //// //// //// //// //// //// UBER //// //// //// //// //// //// ////
