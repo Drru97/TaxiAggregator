@@ -7,6 +7,6 @@ namespace TaxiAggregator.Uber
     public interface IUberClient
     {
         Task<PriceEstimateResponse> EstimatePriceAsync(PriceEstimateRequest request);
-        Task<TimeEstimateResponse> EstimateTimeAsync(TimeEstimateRequest request);
+        Task<TimeEstimateResponse> EstimateTimeAsync(PriceEstimateRequest request);
     }
 }

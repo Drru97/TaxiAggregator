@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TaxiAggregator.Domain.Models;
 using TaxiAggregator.Services.Models;
 
 namespace TaxiAggregator.Services
@@ -24,16 +23,16 @@ namespace TaxiAggregator.Services
             Uklon.Models.Requests.CarType carType;
             switch (request.CarType)
             {
-                case CarType.Variant:
+                case Domain.Models.CarType.Variant:
                     carType = Uklon.Models.Requests.CarType.Wagon;
                     break;
-                case CarType.Economy:
+                case Domain.Models.CarType.Economy:
                     carType = Uklon.Models.Requests.CarType.Econom;
                     break;
-                case CarType.Business:
+                case Domain.Models.CarType.Business:
                     carType = Uklon.Models.Requests.CarType.Premium;
                     break;
-                case CarType.Minibus:
+                case Domain.Models.CarType.Minibus:
                     carType = Uklon.Models.Requests.CarType.Minivan;
                     break;
                 default:
@@ -45,6 +44,18 @@ namespace TaxiAggregator.Services
             {
                 Route = new Uklon.Models.Requests.Route {RoutePoints = new List<Uklon.Models.Requests.Point>()},
                 CarType = carType.ToString()
+            };
+
+            return uklon;
+        }
+
+        public Uklon.Models.Requests.NearestAddressRequest CreateNearestAddressRequest(TaxiRequest request,
+            bool fromOrigin = true)
+        {
+            var uklon = new Uklon.Models.Requests.NearestAddressRequest
+            {
+                Latitude = fromOrigin ? request.Origin.Latitude : request.Destination.Latitude,
+                Longitude = fromOrigin ? request.Origin.Latitude : request.Destination.Latitude
             };
 
             return uklon;
@@ -68,10 +79,10 @@ namespace TaxiAggregator.Services
             Taxi838.Models.Requests.CarType carType;
             switch (request.CarType)
             {
-                case CarType.Variant:
+                case Domain.Models.CarType.Variant:
                     carType = Taxi838.Models.Requests.CarType.Universal;
                     break;
-                case CarType.Minibus:
+                case Domain.Models.CarType.Minibus:
                     carType = Taxi838.Models.Requests.CarType.Minibus;
                     break;
                 default:

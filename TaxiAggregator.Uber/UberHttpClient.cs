@@ -41,7 +41,7 @@ namespace TaxiAggregator.Uber
             return JsonConvert.DeserializeObject<PriceEstimateResponse>(response);
         }
 
-        public async Task<TimeEstimateResponse> EstimateTimeAsync(TimeEstimateRequest request)
+        public async Task<TimeEstimateResponse> EstimateTimeAsync(PriceEstimateRequest request)
         {
             var builder = new UriBuilder(UberConstants.UBER_BASE_URL + "/" + UberConstants.UBER_TIME_ESTIMATE_URL);
             var query = HttpUtility.ParseQueryString(builder.Query);

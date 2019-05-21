@@ -5,6 +5,6 @@ namespace TaxiAggregator.Services
 {
     public interface ITaxiService
     {
-        Task<TaxiResponse> EstimateOrderAsync(TaxiRequest request);
+        Task<TaxiResponse> EstimateOrderAsync(TaxiRequest order);
     }
 }
