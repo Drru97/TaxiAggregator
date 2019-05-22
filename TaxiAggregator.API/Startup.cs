@@ -49,15 +49,18 @@ namespace TaxiAggregator.API
             services.AddSingleton<IOrderMapper, TaxiOrderMapper>();
             services.AddSingleton<IRequestFactory, RequestFactory>();
             services.AddSingleton<ITaxiResponseMapper, TaxiResponseMapper>();
-            
-           // var http = new HttpClient();
+            services.AddSingleton<IDistanceProvider, GoogleMapsDistanceProvider>();
+
+            // var http = new HttpClient();
 
             services.AddTransient<IUberClient>(
                 x => new UberHttpClient(new HttpClient(), "G2BVdH1STnzYM75I3OVsp5XdYMSQipE0RNcvHxcV"));
-            services.AddTransient<IUklonClient>(x => new UklonHttpClient(new HttpClient(), "f42222a32583453089a77af021bca83cn",
-                "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMzg0IiwidHlwIjoiSldUIn0.eyJqdGkiOiJmODExZjVlMzZhOGU0NDk2OTk5OTExMjljNGVlMDg2YyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZ3JvdXBzaWQiOiJNeER2WlNLN3ZWeU4zMEM5YTV5N1ZZMm4yT3N2bnNMN2VKUGtIVENDX2p3RW12b3h0RktmdFpkWkpaZDJuZGVrIiwidW5pcXVlX25hbWUiOiJvbGVnLmR5c3Rha0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoib2xlZy5keXN0YWtAZ21haWwuY29tIiwibmFtZWlkIjoiYWI1OGM0ZmItNGY5MC00NjgyLWIyYWMtMDkxZTdjMWUwNjU2IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJhYjU4YzRmYi00ZjkwLTQ2ODItYjJhYy0wOTFlN2MxZTA2NTYiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJvbGVnLmR5c3Rha0BnbWFpbC5jb20iLCJlbWFpbCI6Im9sZWcuZHlzdGFrQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2xvY2FsaXR5IjoiNSIsIm5iZiI6MTU1ODQzNzkwMCwiZXhwIjoxNTU4NDUyMzAwLCJpYXQiOjE1NTg0Mzc5MDAsImlzcyI6Imh0dHBzOi8vdWtsb24uY29tLnVhLyIsImF1ZCI6Imh0dHBzOi8vdWtsb24uY29tLnVhLyIsInByb3BlcnRpZXMiOnsiYXBwX3VpZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwiY2xpZW50X2lkIjoiZjQyMjIyYTMyNTgzNDUzMDg5YTc3YWYwMjFiY2E4M2NuIn19.SLtgrnp3Xk_jkt8ikgaUDD_Fm6-tzpj2W5pKdp5kJVZJLs7yfh1Wcc5EvoICNzrQM4r0STEGkG0ftzgSZPV-l2aebGWNQ0g3sXkAWtLpvHAIt6tfKyQkT-JwJuQvDzJkT04o68AOSatEYi8k-ALC52Q9RYd4SXaxyAF7q4A0Og1JAaTxRFUwsbpe-AMwE197vaVv-kpNbFiwNj0U5CalHR6bwLbBjgIUZDgP1O8k7v0yExpN3HSJOhLqbOAMUm84DU2pF0QFfbqR-09pqno29-V6iGbxJtKzl03sj9jDBbDUC0LGaqt8kxClm53aiyevxTvUGNFoj9hX9OO-0QCGNA"));
+            services.AddTransient<IUklonClient>(x => new UklonHttpClient(new HttpClient(),
+                "f42222a32583453089a77af021bca83cn",
+                "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMzg0IiwidHlwIjoiSldUIn0.eyJqdGkiOiI0MjhiN2I3MDM1YzQ0NTY4ODVhN2YzMWE2YjYyNjQ3ZiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZ3JvdXBzaWQiOiJNeER2WlNLN3ZWeU4zMEM5YTV5N1ZZMm4yT3N2bnNMN2VKUGtIVENDX2p3RW12b3h0RktmdFpkWkpaZDJuZGVrIiwidW5pcXVlX25hbWUiOiJvbGVnLmR5c3Rha0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoib2xlZy5keXN0YWtAZ21haWwuY29tIiwibmFtZWlkIjoiYWI1OGM0ZmItNGY5MC00NjgyLWIyYWMtMDkxZTdjMWUwNjU2IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJhYjU4YzRmYi00ZjkwLTQ2ODItYjJhYy0wOTFlN2MxZTA2NTYiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJvbGVnLmR5c3Rha0BnbWFpbC5jb20iLCJlbWFpbCI6Im9sZWcuZHlzdGFrQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2xvY2FsaXR5IjoiNSIsIm5iZiI6MTU1ODUzMTg4NywiZXhwIjoxNTU4NTQ2Mjg3LCJpYXQiOjE1NTg1MzE4ODcsImlzcyI6Imh0dHBzOi8vdWtsb24uY29tLnVhLyIsImF1ZCI6Imh0dHBzOi8vdWtsb24uY29tLnVhLyIsInByb3BlcnRpZXMiOnsiYXBwX3VpZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwiY2xpZW50X2lkIjoiZjQyMjIyYTMyNTgzNDUzMDg5YTc3YWYwMjFiY2E4M2NuIn19.rogDZEDu4SkwbarBgBjS9NLWNmrqpOv2BiJYDVBGmhwBXmUmeN760mMsgoNqljaLg8FsJHtnlWRKdAvLZjgt1cYdaNOmlJ8Mzo13f2zVMiiZz4kd_Zp-5Jkuzd1BNqKl5kZekOxnjN_ckCQ7nu3RqJCAhhQxNbv7_BJlDsfBWRpxrH-HU8aUS9cd6Xeq3B_d4oygvKgrVYlar4pUUI24FVn3m72f1neR5MP8KneMT4kgBiLfkq6HV20DfN18mNZHdm67BPMKmBiJEP3VeXmEt97CjcDTq_iQba9tKCh_m9y-v0aI8koeJifSrRnnQm141HN95fmRvt-w5IKbgkxAAw"));
             services.AddTransient<IBoltClient>(x =>
-                new BoltHttpClient(new HttpClient(), "KzM4MDYzOTI5NjUzNzphZGZkMjE0Yi01ZjA4LTM0NGQtYTM2Ni0yODBmMTZlMjUwMWQ="));
+                new BoltHttpClient(new HttpClient(),
+                    "KzM4MDYzOTI5NjUzNzphZGZkMjE0Yi01ZjA4LTM0NGQtYTM2Ni0yODBmMTZlMjUwMWQ="));
             services.AddTransient<ITaxi838Client>(x => new Taxi838HttpClient(new HttpClient()));
         }
     }

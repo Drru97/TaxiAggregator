@@ -12,4 +12,8 @@
       <ProjectReference Include="..\TaxiAggregator.Uklon\TaxiAggregator.Uklon.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="GoogleApi" Version="3.8.6" />
+    </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TaxiAggregator.Domain.Models;
 using TaxiAggregator.Services.Models;
 
 namespace TaxiAggregator.Services
@@ -109,6 +110,17 @@ namespace TaxiAggregator.Services
             };
 
             return taxi838;
+        }
+
+        public DistanceRequest CreateDistanceRequest(TaxiRequest request)
+        {
+            var distance = new DistanceRequest
+            {
+                Origin = new Location(request.Origin.Latitude, request.Origin.Longitude),
+                Destination = new Location(request.Destination.Latitude, request.Destination.Longitude)
+            };
+
+            return distance;
         }
     }
 }

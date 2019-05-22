@@ -29,6 +29,7 @@ namespace TaxiAggregator.Services
                         MaxPrice = (int?) price.HighEstimate
                     },
                     Distance = price.Distance,
+                    Duration = (int) price.Duration,
                     Seats = 4,
                     PickupTime = (int?) time.Estimate
                 }
@@ -37,7 +38,8 @@ namespace TaxiAggregator.Services
             return detail;
         }
 
-        public TripDetail FromUklon(TaxiRequest order, Uklon.Models.Responses.PriceEstimateResponse response)
+        public TripDetail FromUklon(TaxiRequest order, Uklon.Models.Responses.PriceEstimateResponse response,
+            DistanceResponse distance)
         {
             var detail = new TripDetail
             {
@@ -53,6 +55,7 @@ namespace TaxiAggregator.Services
                         SurgeMultiplier = response.CostMultiplier
                     },
                     Distance = response.Distance,
+                    Duration = distance.Duration,
                     Seats = order.CarType == CarType.Minibus ? 8 : 4
                 }
             };
@@ -60,12 +63,13 @@ namespace TaxiAggregator.Services
             return detail;
         }
 
-        public TripDetail FromBolt(TaxiRequest order, Bolt.Models.Responses.PriceEstimateResponse response)
+        public TripDetail FromBolt(TaxiRequest order, Bolt.Models.Responses.PriceEstimateResponse response,
+            DistanceResponse distance)
         {
             var price = order.CarType == CarType.Business
                 ? response.Data.SearchCategories.Single(x => x.Name.Equals("Comfort"))
                 : response.Data.SearchCategories.Single(x => x.Name.Equals("Bolt"));
-            
+
             var minCost = int.Parse(price.PricePrediction.Trim('₴').Split('–').First());
             var maxCost = int.Parse(price.PricePrediction.Trim('₴').Split('–').Last());
             var avgCost = (minCost + maxCost) / 2;
@@ -83,6 +87,8 @@ namespace TaxiAggregator.Services
                         Cost = avgCost,
                         SurgeMultiplier = price.SurgeMultiplier
                     },
+                    Distance = distance.Distance,
+                    Duration = distance.Duration,
                     PickupTime = price.PickupTime,
                     Seats = 4
                 }
@@ -91,7 +97,8 @@ namespace TaxiAggregator.Services
             return detail;
         }
 
-        public TripDetail FromTaxi838(TaxiRequest order, Taxi838.Models.Responses.PriceEstimateResponse response)
+        public TripDetail FromTaxi838(TaxiRequest order, Taxi838.Models.Responses.PriceEstimateResponse response,
+            DistanceResponse distance)
         {
             var detail = new TripDetail
             {

@@ -12,5 +12,7 @@ namespace TaxiAggregator.Services
 
         Bolt.Models.Requests.PriceEstimateRequest CreateBoltRequest(TaxiRequest request);
         Taxi838.Models.Requests.PriceEstimateRequest CreateTaxi838Request(TaxiRequest request);
+
+        DistanceRequest CreateDistanceRequest(TaxiRequest request);
     }
 }

@@ -18,17 +18,20 @@ namespace TaxiAggregator.Services
         private readonly IBoltClient _bolt;
         private readonly ITaxi838Client _taxi838;
 
+        private readonly IDistanceProvider _distance;
+
         private readonly IRequestFactory _factory;
         private readonly IOrderValidator _validator;
         private readonly IOrderMapper _mapper;
 
         public LvivTaxiService(IUberClient uber, IUklonClient uklon, IBoltClient bolt, ITaxi838Client taxi838,
-            IRequestFactory factory, IOrderValidator validator, IOrderMapper mapper)
+            IDistanceProvider distance, IRequestFactory factory, IOrderValidator validator, IOrderMapper mapper)
         {
             _uber = uber;
             _uklon = uklon;
             _bolt = bolt;
             _taxi838 = taxi838;
+            _distance = distance;
             _factory = factory;
             _validator = validator;
             _mapper = mapper;
@@ -47,6 +50,11 @@ namespace TaxiAggregator.Services
                 Destination = order.Destination,
                 Details = new List<TripDetail>(4)
             };
+
+            //// //// //// //// //// //// GOOGLE MAPS //// //// //// //// //// //// //
+
+            var distanceRequest = _factory.CreateDistanceRequest(order);
+            var distance = await _distance.GetDistanceAsync(distanceRequest);
 
             //// //// //// //// //// //// //// UBER //// //// //// //// //// //// ////
 
@@ -72,7 +80,7 @@ namespace TaxiAggregator.Services
 
             var uklonPriceResponse = await _uklon.EstimatePriceV2Async(uklonRequest);
 
-            var uklonTrip = _mapper.FromUklon(order, uklonPriceResponse);
+            var uklonTrip = _mapper.FromUklon(order, uklonPriceResponse, distance);
             response.Details.Add(uklonTrip);
 
             //// //// //// //// //// //// //// BOLT //// //// //// //// //// //// ////
@@ -81,7 +89,7 @@ namespace TaxiAggregator.Services
 
             var boltPriceResponse = await _bolt.EstimatePriceAsync(boltRequest);
 
-            var boltTrip = _mapper.FromBolt(order, boltPriceResponse);
+            var boltTrip = _mapper.FromBolt(order, boltPriceResponse, distance);
             response.Details.Add(boltTrip);
 
             //// //// //// //// //// //// //// 838 //// //// //// //// //// //// /////
@@ -90,7 +98,7 @@ namespace TaxiAggregator.Services
 
             var taxi838PriceResponse = await _taxi838.EstimatePriceAsync(taxi838Request);
 
-            var taxi838Trip = _mapper.FromTaxi838(order, taxi838PriceResponse);
+            var taxi838Trip = _mapper.FromTaxi838(order, taxi838PriceResponse, distance);
             response.Details.Add(taxi838Trip);
 
             //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
