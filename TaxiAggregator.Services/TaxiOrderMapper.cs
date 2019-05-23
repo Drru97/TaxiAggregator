@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using TaxiAggregator.Domain.Models;
 using TaxiAggregator.Services.Models;
@@ -100,6 +101,8 @@ namespace TaxiAggregator.Services
         public TripDetail FromTaxi838(TaxiRequest order, Taxi838.Models.Responses.PriceEstimateResponse response,
             DistanceResponse distance)
         {
+            var cost = int.Parse(response.Price.Split(' ').First());
+
             var detail = new TripDetail
             {
                 CarType = order.CarType,
@@ -108,8 +111,12 @@ namespace TaxiAggregator.Services
                 {
                     Price = new Price
                     {
-                        Cost = int.Parse(response.Price.Split(' ').First())
+                        Cost = cost,
+                        MinPrice = cost - new Random().Next(10),
+                        MaxPrice = cost + new Random().Next(30)
                     },
+                    Distance = distance.Distance,
+                    Duration = distance.Duration,
                     Seats = order.CarType == CarType.Minibus ? 8 : 4
                 }
             };
