@@ -6,6 +6,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\TaxiAggregator.Bolt\TaxiAggregator.Bolt.csproj" />
+      <ProjectReference Include="..\TaxiAggregator.DataAccess\TaxiAggregator.DataAccess.csproj" />
       <ProjectReference Include="..\TaxiAggregator.Domain\TaxiAggregator.Domain.csproj" />
       <ProjectReference Include="..\TaxiAggregator.Taxi838\TaxiAggregator.Taxi838.csproj" />
       <ProjectReference Include="..\TaxiAggregator.Uber\TaxiAggregator.Uber.csproj" />

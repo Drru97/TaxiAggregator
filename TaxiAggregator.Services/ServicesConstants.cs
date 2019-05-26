@@ -2,10 +2,10 @@ namespace TaxiAggregator.Services
 {
     public class ServicesConstants
     {
-        public const string UBER_TOKEN = "";
-        public const string UKLON_CLIENT_ID = "";
-        public const string UKLON_TOKEN = "";
-        public const string BOLT_TOKEN = "";
-        public const string GOOGLE_MAPS_API_KEY = "";
+        public const string UBER_TOKEN = "G2BVdH1STnzYM75I3OVsp5XdYMSQipE0RNcvHxcV";
+        public const string UKLON_CLIENT_ID = "f42222a32583453089a77af021bca83cn";
+        public const string UKLON_TOKEN = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMzg0IiwidHlwIjoiSldUIn0.eyJqdGkiOiIxN2E4OGI4M2VjNTE0MjliOTQ4YzMyOThiODE5ZDQzNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZ3JvdXBzaWQiOiJNeER2WlNLN3ZWeU4zMEM5YTV5N1ZZMm4yT3N2bnNMN2VKUGtIVENDX2p3RW12b3h0RktmdFpkWkpaZDJuZGVrIiwidW5pcXVlX25hbWUiOiJvbGVnLmR5c3Rha0BnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoib2xlZy5keXN0YWtAZ21haWwuY29tIiwibmFtZWlkIjoiYWI1OGM0ZmItNGY5MC00NjgyLWIyYWMtMDkxZTdjMWUwNjU2IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJhYjU4YzRmYi00ZjkwLTQ2ODItYjJhYy0wOTFlN2MxZTA2NTYiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJvbGVnLmR5c3Rha0BnbWFpbC5jb20iLCJlbWFpbCI6Im9sZWcuZHlzdGFrQGdtYWlsLmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2xvY2FsaXR5IjoiNSIsIm5iZiI6MTU1ODcwMjU4MywiZXhwIjoxNTU4NzE2OTgzLCJpYXQiOjE1NTg3MDI1ODMsImlzcyI6Imh0dHBzOi8vdWtsb24uY29tLnVhLyIsImF1ZCI6Imh0dHBzOi8vdWtsb24uY29tLnVhLyIsInByb3BlcnRpZXMiOnsiYXBwX3VpZCI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwiY2xpZW50X2lkIjoiZjQyMjIyYTMyNTgzNDUzMDg5YTc3YWYwMjFiY2E4M2NuIn19.QOACK8ylukWp3yOxmXjU2yLD57Mzg186YtG2Qxa9qsF8FUYey-UJFI3DEFrg5YjksN2vcVYSeql9ekAVUk8EU2mXteBq577K1NKgxgqwKpgbNK2_fEeJDrG9SQR9p7mBmc_7TaNWOW82bAeE0SPF3HkCRax1YRnYOzJS7q7pMu_165thzbSIoZH2Xq2M_48WZWftPTRnF7lpgJfTkcmuTDjQHDhFAkMNd-Vdz3ByAE0jN0lmUHkEwM1locGsAXJrM0_FXfM_FejHPk5oKJbrsy1LifFCNsTBcn3VkhWQTjty2N7X2Hqkjfu1MTZKqBOuFsghzAUYDO-dSsJTf6FfRg";
+        public const string BOLT_TOKEN = "KzM4MDYzOTI5NjUzNzphZGZkMjE0Yi01ZjA4LTM0NGQtYTM2Ni0yODBmMTZlMjUwMWQ=";
+        public const string GOOGLE_MAPS_API_KEY = "AIzaSyDXhKipnXajKn1qzMlwKd1YOBi4Ns5nBP8";
     }
 }

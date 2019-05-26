@@ -24,8 +24,11 @@ namespace TaxiAggregator.Services
         private readonly IOrderValidator _validator;
         private readonly IOrderMapper _mapper;
 
+        private readonly IHistoricalDataService _historicalData;
+
         public LvivTaxiService(IUberClient uber, IUklonClient uklon, IBoltClient bolt, ITaxi838Client taxi838,
-            IDistanceProvider distance, IRequestFactory factory, IOrderValidator validator, IOrderMapper mapper)
+            IDistanceProvider distance, IRequestFactory factory, IOrderValidator validator, IOrderMapper mapper,
+            IHistoricalDataService historicalData)
         {
             _uber = uber;
             _uklon = uklon;
@@ -35,6 +38,7 @@ namespace TaxiAggregator.Services
             _factory = factory;
             _validator = validator;
             _mapper = mapper;
+            _historicalData = historicalData;
         }
 
         public async Task<TaxiResponse> EstimateOrderAsync(TaxiRequest order)
@@ -102,6 +106,8 @@ namespace TaxiAggregator.Services
             response.Details.Add(taxi838Trip);
 
             //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
+
+            await _historicalData.SaveHistoricalDataAsync(response);
 
             return response;
         }

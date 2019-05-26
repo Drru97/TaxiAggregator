@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.Domain", "Ta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.API", "TaxiAggregator.API\TaxiAggregator.API.csproj", "{9B7ADF2C-D54A-4A54-8867-470532A4171B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.DataAccess", "TaxiAggregator.DataAccess\TaxiAggregator.DataAccess.csproj", "{BE4150B2-A3B3-4912-BCCB-CC40AD53CF52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,5 +62,9 @@ Global
 		{9B7ADF2C-D54A-4A54-8867-470532A4171B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B7ADF2C-D54A-4A54-8867-470532A4171B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B7ADF2C-D54A-4A54-8867-470532A4171B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE4150B2-A3B3-4912-BCCB-CC40AD53CF52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE4150B2-A3B3-4912-BCCB-CC40AD53CF52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE4150B2-A3B3-4912-BCCB-CC40AD53CF52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE4150B2-A3B3-4912-BCCB-CC40AD53CF52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

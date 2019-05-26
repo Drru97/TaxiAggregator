@@ -2,10 +2,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaxiAggregator.API.Mappers;
 using TaxiAggregator.Bolt;
+using TaxiAggregator.DataAccess;
+using TaxiAggregator.DataAccess.Generic;
 using TaxiAggregator.Services;
 using TaxiAggregator.Taxi838;
 using TaxiAggregator.Uber;
@@ -26,6 +29,10 @@ namespace TaxiAggregator.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var connectionString = Configuration.GetConnectionString("SqlServer_HistoricalDataDb");
+
+            services.AddDbContext<TaxiAggregatorContext>(x => x.UseSqlServer(connectionString));
 
             RegisterTaxiDependencies(services);
         }
@@ -51,13 +58,25 @@ namespace TaxiAggregator.API
             services.AddSingleton<ITaxiResponseMapper, TaxiResponseMapper>();
             services.AddSingleton<IDistanceProvider, GoogleMapsDistanceProvider>();
 
-            // var http = new HttpClient();
+            RegisterTaxiClients(services);
+            RegisterDatabaseDependencies(services);
+        }
 
+        private static void RegisterTaxiClients(IServiceCollection services)
+        {
             services.AddTransient<IUberClient>(x => new UberHttpClient(new HttpClient(), ServicesConstants.UBER_TOKEN));
             services.AddTransient<IUklonClient>(x => new UklonHttpClient(new HttpClient(),
                 ServicesConstants.UKLON_CLIENT_ID, ServicesConstants.UKLON_TOKEN));
             services.AddTransient<IBoltClient>(x => new BoltHttpClient(new HttpClient(), ServicesConstants.BOLT_TOKEN));
             services.AddTransient<ITaxi838Client>(x => new Taxi838HttpClient(new HttpClient()));
+        }
+
+        private static void RegisterDatabaseDependencies(IServiceCollection services)
+        {
+            services.AddTransient<IDbFactory<TaxiAggregatorContext>, DbFactory<TaxiAggregatorContext>>();
+            services.AddTransient<IHistoricalDataRepository, HistoricalDataRepository>();
+            services.AddTransient<IUnitOfWork<TaxiAggregatorContext>, UnitOfWork<TaxiAggregatorContext>>();
+            services.AddTransient<IHistoricalDataService, HistoricalDataService>();
         }
     }
 }
