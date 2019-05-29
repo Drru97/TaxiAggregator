@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaxiAggregator.API.Mappers;
@@ -30,9 +29,7 @@ namespace TaxiAggregator.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            var connectionString = Configuration.GetConnectionString("SqlServer_HistoricalDataDb");
-
-            services.AddDbContext<TaxiAggregatorContext>(x => x.UseSqlServer(connectionString));
+            services.AddDbContext<TaxiAggregatorContext>();
 
             RegisterTaxiDependencies(services);
         }

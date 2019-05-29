@@ -1,22 +1,14 @@
 using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace TaxiAggregator.DataAccess.Generic
 {
-    public class DbFactory<TDbContext> : IDbFactory<TDbContext>, IDisposable where TDbContext : BaseDbContext
+    public class DbFactory<TDbContext> : IDbFactory<TDbContext>, IDisposable where TDbContext : BaseDbContext, new()
     {
         private TDbContext _dbContext;
-        private readonly IConfiguration _configuration;
-
-        public DbFactory(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
 
         public TDbContext Initialize()
         {
-            return _dbContext ?? (_dbContext = (TDbContext) new BaseDbContext(""));
+            return _dbContext ?? (_dbContext = new TDbContext());
         }
 
         public void Dispose()

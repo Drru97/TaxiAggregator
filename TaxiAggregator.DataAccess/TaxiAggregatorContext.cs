@@ -6,22 +6,14 @@ namespace TaxiAggregator.DataAccess
 {
     public class TaxiAggregatorContext : BaseDbContext
     {
-        private readonly string _connectionString;
-        
-        public TaxiAggregatorContext(string connectionString) : base(connectionString)
-        {
-            _connectionString = connectionString;
-        }
-
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_connectionString);
+            optionsBuilder.UseSqlServer(
+                "Data Source=tcp:10.0.75.1,1434;Initial Catalog=HistoricalDataDb;User ID=SA;Password=Qwerty12;");
         }
 
         public DbSet<HistoricalData> StatisticalData { get; set; }
