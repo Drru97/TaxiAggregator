@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using TaxiAggregator.DataAccess;
+using TaxiAggregator.DataAccess.Generic;
 using TaxiAggregator.Domain.Models;
 using TaxiAggregator.Services.Models;
 
@@ -9,10 +10,12 @@ namespace TaxiAggregator.Services
     public class HistoricalDataService : IHistoricalDataService
     {
         private readonly IHistoricalDataRepository _historicalData;
+        private readonly IUnitOfWork<TaxiAggregatorContext> _uow;
 
-        public HistoricalDataService(IHistoricalDataRepository historicalData)
+        public HistoricalDataService(IHistoricalDataRepository historicalData, IUnitOfWork<TaxiAggregatorContext> uow)
         {
             _historicalData = historicalData;
+            _uow = uow;
         }
 
         public async Task SaveHistoricalDataAsync(TaxiResponse response)
@@ -39,6 +42,8 @@ namespace TaxiAggregator.Services
 
                 await _historicalData.SaveHistoricalDataAsync(historicalData);
             }
+
+            await _uow.CommitAsync();
         }
 
         public Task<HistoricalData> GetHistoricalDataForSimilarRequestAsync(TaxiRequest request)

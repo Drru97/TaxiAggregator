@@ -70,7 +70,7 @@ namespace TaxiAggregator.API
 
         private static void RegisterDatabaseDependencies(IServiceCollection services)
         {
-            services.AddTransient<IDbFactory<TaxiAggregatorContext>, DbFactory<TaxiAggregatorContext>>();
+            services.AddSingleton<IDbFactory<TaxiAggregatorContext>, DbFactory<TaxiAggregatorContext>>();
             services.AddTransient<IHistoricalDataRepository, HistoricalDataRepository>();
             services.AddTransient<IUnitOfWork<TaxiAggregatorContext>, UnitOfWork<TaxiAggregatorContext>>();
             services.AddTransient<IHistoricalDataService, HistoricalDataService>();
