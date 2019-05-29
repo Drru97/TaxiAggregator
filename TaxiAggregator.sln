@@ -2,10 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.Uber", "TaxiAggregator.Uber\TaxiAggregator.Uber.csproj", "{E9FB7274-7B0E-4AD6-A753-3194DE814E77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{C4CA0C1B-A6BC-40C0-B0A1-48571BA91A57}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.EconomTaxi", "TaxiAggregator.EconomTaxi\TaxiAggregator.EconomTaxi.csproj", "{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.Uklon", "TaxiAggregator.Uklon\TaxiAggregator.Uklon.csproj", "{8171E5A8-7AD0-4F12-BFD4-2AF5438260A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiAggregator.Bolt", "TaxiAggregator.Bolt\TaxiAggregator.Bolt.csproj", "{6BF8351D-86CB-4A94-A746-697DA4FDC623}"
@@ -30,14 +26,6 @@ Global
 		{E9FB7274-7B0E-4AD6-A753-3194DE814E77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9FB7274-7B0E-4AD6-A753-3194DE814E77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9FB7274-7B0E-4AD6-A753-3194DE814E77}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4CA0C1B-A6BC-40C0-B0A1-48571BA91A57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4CA0C1B-A6BC-40C0-B0A1-48571BA91A57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4CA0C1B-A6BC-40C0-B0A1-48571BA91A57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4CA0C1B-A6BC-40C0-B0A1-48571BA91A57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59BC7B1B-6F00-4C4C-BA74-8A15372FD45D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8171E5A8-7AD0-4F12-BFD4-2AF5438260A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8171E5A8-7AD0-4F12-BFD4-2AF5438260A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8171E5A8-7AD0-4F12-BFD4-2AF5438260A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
