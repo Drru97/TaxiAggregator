@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -17,7 +18,7 @@ namespace TaxiAggregator.Uklon
     {
         private readonly HttpClient _http;
         private readonly string _clientId;
-        private readonly string _token;
+        private string _token;
         private readonly ApiVersion _version;
 
         public UklonHttpClient(HttpClient http, string clientId, string token, ApiVersion version = ApiVersion.Version2)
@@ -81,14 +82,45 @@ namespace TaxiAggregator.Uklon
         {
             var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8,
                 UklonConstants.UKLON_PRICE_ESTIMATE_REQUEST_CONTENT_TYPE);
-            
-            _http.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(UklonConstants.UKLON_AUTH_TYPE + " " + _token);
+
+            _http.DefaultRequestHeaders.Authorization =
+                AuthenticationHeaderValue.Parse(UklonConstants.UKLON_AUTH_TYPE + " " + _token);
 
             const string url = UklonConstants.UKLON_BASE_URL + "/" + UklonConstants.UKLON_PRICE_ESTIMATE_V2_URL;
 
             var responseMessage = await _http.PostAsync(url, content);
+            if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                await GetBearerToken();
+                _http.DefaultRequestHeaders.Authorization =
+                    AuthenticationHeaderValue.Parse($"{UklonConstants.UKLON_AUTH_TYPE} {_token}");
+
+                responseMessage = await _http.PostAsync(url, content);
+            }
+
             var response = await responseMessage.Content.ReadAsStringAsync();
+
             return JsonConvert.DeserializeObject<PriceEstimateResponse>(response);
+        }
+
+        private async Task GetBearerToken()
+        {
+            var authUrl = $"{UklonConstants.UKLON_BASE_URL}/{UklonConstants.UKLON_AUTH_URL}";
+            var content =
+                new StringContent(
+                    $"client_id={_clientId}&grant_type={UklonConstants.UKLON_GRANT_TYPE}&refresh_token={UklonConstants.UKLON_REFRESH_TOKEN}",
+                    Encoding.Default, UklonConstants.UKLON_AUTH_REQUEST_CONTENT_TYPE);
+
+            var responseMessage = await _http.PostAsync(authUrl, content);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var responseBody = await responseMessage.Content.ReadAsStringAsync();
+                var response = JsonConvert.DeserializeObject<AuthorizationResponse>(responseBody);
+                if (response.Authorized)
+                {
+                    _token = response.AccessToken;
+                }
+            }
         }
 
         private void SetupHttpClient()
