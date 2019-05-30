@@ -29,8 +29,6 @@ namespace TaxiAggregator.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<TaxiAggregatorContext>();
-
             RegisterTaxiDependencies(services);
         }
 
