@@ -3,6 +3,7 @@ using System.Net.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -35,7 +36,7 @@ namespace TaxiAggregator.API
             services.AddSwaggerGen(s =>
             {
                 var xmlDocumentationPath = $"{AppDomain.CurrentDomain.BaseDirectory}TaxiAggregator.API.xml";
-                
+
                 s.SwaggerDoc("v1", new Info
                 {
                     Title = "Taxi Aggregator API",
@@ -65,6 +66,15 @@ namespace TaxiAggregator.API
 
             app.UseSwagger();
             app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Taxi Aggregator API"));
+
+            ApplyDatabaseMigrations();
+        }
+
+        private void ApplyDatabaseMigrations()
+        {
+            var connectionString = Configuration.GetConnectionString("SqlServer_HistoricalDataDb");
+            var context = new TaxiAggregatorContext(connectionString);
+            context.Database.Migrate();
         }
 
         private static void RegisterTaxiDependencies(IServiceCollection services)

@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TaxiAggregator.DataAccess.Migrations
@@ -13,7 +12,7 @@ namespace TaxiAggregator.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGeneratedOnAdd", true),
                     OriginLatitude = table.Column<double>(nullable: false),
                     OriginLongitude = table.Column<double>(nullable: false),
                     DestinationLatitude = table.Column<double>(nullable: false),

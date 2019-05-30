@@ -16,7 +16,7 @@ namespace TaxiAggregator.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConnectionString);
+            optionsBuilder.UseMySql(ConnectionString);
         }
 
         public DbSet<HistoricalData> StatisticalData { get; set; }
