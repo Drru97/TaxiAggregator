@@ -1,10 +1,13 @@
-﻿using System.Net.Http;
+using System;
+using System.Net.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using TaxiAggregator.API.Mappers;
+using TaxiAggregator.API.Validation;
 using TaxiAggregator.Bolt;
 using TaxiAggregator.DataAccess;
 using TaxiAggregator.DataAccess.Generic;
@@ -29,6 +32,24 @@ namespace TaxiAggregator.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddSwaggerGen(s =>
+            {
+                var xmlDocumentationPath = $"{AppDomain.CurrentDomain.BaseDirectory}TaxiAggregator.API.xml";
+                
+                s.SwaggerDoc("v1", new Info
+                {
+                    Title = "Taxi Aggregator API",
+                    Description = "Aggregator for Uber, Uklon, Bolt, Taxi 838 services.",
+                    Version = "v1",
+                    Contact = new Contact
+                    {
+                        Email = "oleg.dystak@gmail.com",
+                        Name = "Oleh Dutsiak"
+                    }
+                });
+                s.IncludeXmlComments(xmlDocumentationPath);
+            });
+
             RegisterTaxiDependencies(services);
         }
 
@@ -41,6 +62,9 @@ namespace TaxiAggregator.API
             }
 
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Taxi Aggregator API"));
         }
 
         private static void RegisterTaxiDependencies(IServiceCollection services)
@@ -52,6 +76,8 @@ namespace TaxiAggregator.API
             services.AddSingleton<IRequestFactory, RequestFactory>();
             services.AddSingleton<ITaxiResponseMapper, TaxiResponseMapper>();
             services.AddSingleton<IDistanceProvider, GoogleMapsDistanceProvider>();
+
+            services.AddSingleton<IRequestValidator, TaxiRequestValidator>();
 
             RegisterTaxiClients(services);
             RegisterDatabaseDependencies(services);
